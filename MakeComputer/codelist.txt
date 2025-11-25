@@ -1,0 +1,77 @@
+computer.c
+命令リスト (*はdon't care)
+2進数/10進数(最小値)/意味
+
+0 0 . . . . . . /   . / 即値. →.の数字がレジスタ0へ代入される
+
+0 1 * * * 0 0 0 /  64 / or
+0 1 * * * 0 0 1 /  65 / nand
+0 1 * * * 0 1 0 /  66 / nor
+0 1 * * * 0 1 1 /  67 / and
+0 1 * * * 1 0 0 /  68 / add
+0 1 * * * 1 1 0 /  69 / sub →レジスタ1とレジスタ2のそれぞれの計算結果をレジスタ3に代入する
+
+1 0 0 0 0 0 0 0 / 128 / cp reg0 to reg0
+1 0 0 0 0 0 0 1 / 129 / cp reg0 to reg1
+1 0 0 0 0 0 1 0 / 130 / cp reg0 to reg2
+1 0 0 0 0 0 1 1 / 131 / cp reg0 to reg3
+1 0 0 0 0 1 0 0 / 132 / cp reg0 to reg4
+1 0 0 0 0 1 0 1 / 133 / cp reg0 to reg5
+1 0 0 0 0 1 1 0 / 134 / cp reg0 to output
+
+1 0 0 0 1 0 0 0 / 136 / cp reg1 to reg0
+1 0 0 0 1 0 0 1 / 137 / cp reg1 to reg1
+1 0 0 0 1 0 1 0 / 138 / cp reg1 to reg2
+1 0 0 0 1 0 1 1 / 139 / cp reg1 to reg3
+1 0 0 0 1 1 0 0 / 140 / cp reg1 to reg4
+1 0 0 0 1 1 0 1 / 141 / cp reg1 to reg5
+1 0 0 0 1 1 1 0 / 142 / cp reg1 to output
+
+1 0 0 1 0 0 0 0 / 144 / cp reg2 to reg0
+1 0 0 1 0 0 0 1 / 145 / cp reg2 to reg1
+1 0 0 1 0 0 1 0 / 146 / cp reg2 to reg2
+1 0 0 1 0 0 1 1 / 147 / cp reg2 to reg3
+1 0 0 1 0 1 0 0 / 148 / cp reg2 to reg4
+1 0 0 1 0 1 0 1 / 149 / cp reg2 to reg5
+1 0 0 1 0 1 1 0 / 150 / cp reg2 to output
+
+1 0 0 1 1 0 0 0 / 152 / cp reg3 to reg0
+1 0 0 1 1 0 0 1 / 153 / cp reg3 to reg1
+1 0 0 1 1 0 1 0 / 154 / cp reg3 to reg2
+1 0 0 1 1 0 1 1 / 155 / cp reg3 to reg3
+1 0 0 1 1 1 0 0 / 156 / cp reg3 to reg4
+1 0 0 1 1 1 0 1 / 157 / cp reg3 to reg5
+1 0 0 1 1 1 1 0 / 158 / cp reg3 to output
+
+1 0 1 0 0 0 0 0 / 160 / cp reg4 to reg0
+1 0 1 0 0 0 0 1 / 161 / cp reg4 to reg1
+1 0 1 0 0 0 1 0 / 162 / cp reg4 to reg2
+1 0 1 0 0 0 1 1 / 163 / cp reg4 to reg3
+1 0 1 0 0 1 0 0 / 164 / cp reg4 to reg4
+1 0 1 0 0 1 0 1 / 165 / cp reg4 to reg5
+1 0 1 0 1 1 1 0 / 166 / cp reg4 to output
+
+1 0 1 0 1 0 0 0 / 168 / cp reg5 to reg0
+1 0 1 0 1 0 0 1 / 169 / cp reg5 to reg1
+1 0 1 0 1 0 1 0 / 170 / cp reg5 to reg2
+1 0 1 0 1 0 1 1 / 171 / cp reg5 to reg3
+1 0 1 0 1 1 0 0 / 172 / cp reg5 to reg4
+1 0 1 0 1 1 0 1 / 173 / cp reg5 to reg5
+1 0 1 0 1 1 1 0 / 174 / cp reg5 to output
+
+1 0 1 1 0 0 0 0 / 160 / cp input to reg0
+1 0 1 1 0 0 0 1 / 161 / cp input to reg1
+1 0 1 1 0 0 1 0 / 162 / cp input to reg2
+1 0 1 1 0 0 1 1 / 163 / cp input to reg3
+1 0 1 1 0 1 0 0 / 164 / cp input to reg4
+1 0 1 1 0 1 0 1 / 165 / cp input to reg5
+1 0 1 1 0 1 1 0 / 166 / cp input to output →from から toへ値をコピーする
+
+1 1 * * * 0 0 0 / 192 / never
+1 1 * * * 0 0 1 / 193 / value = 0
+1 1 * * * 0 1 0 / 194 / value < 0
+1 1 * * * 0 1 1 / 195 / value <=0
+1 1 * * * 1 0 0 / 196 / always
+1 1 * * * 1 0 1 / 197 / value !=0
+1 1 * * * 1 1 0 / 198 / value >=0
+1 1 * * * 1 1 1 / 199 / value > 0 →value(レジスタ3)が条件を満たした時にカウンタの値をレジスタ0と同じにする
